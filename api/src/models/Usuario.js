@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const usuarios = [
+const usuarioss = [
   {
     id: "7qnptt5s",
     nome: "Ada Lovelace",

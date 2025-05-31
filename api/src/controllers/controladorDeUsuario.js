@@ -3,7 +3,7 @@ const { HttpError } = require("../errors/HttpError");
 
 class ControladorDeUsuario {
   pegarTodos(_req, res) {
-    try {
+
       const usuarios = servicoDeUsuario.buscarTodos();
 
       if (usuarios.length === 0) {
@@ -13,15 +13,11 @@ class ControladorDeUsuario {
       }
 
       res.status(200).json(usuarios);
-    } catch (error) {
-      res
-        .status(500)
-        .json({ erro: error.message || "Erro ao buscar usuários." });
-    }
+    
   }
 
   pegarUmPeloID(req, res) {
-    try {
+    {
       const id = req.params.id;
       const usuario = servicoDeUsuario.pegarPeloID(id);
 
@@ -32,7 +28,7 @@ class ControladorDeUsuario {
       }
 
       res.status(200).json(usuario);
-    } catch (error) {
+    }  {
       res
         .status(500)
         .json({ erro: error.message || "Erro ao buscar usuários." });
@@ -42,7 +38,7 @@ class ControladorDeUsuario {
   cadastrar(req, res) {
     try {
       const { nome, email, cpf, senha } = req.body;
-      const resposta = servicoDeUsuario.cadastrar(nome, email, cpf, senha);
+      const resposta = servicoDeUsuarios.cadastrar(nome, email, cpf, senha);
 
       if (resposta instanceof Error) {
         return res.status(400).json(resposta.message);
